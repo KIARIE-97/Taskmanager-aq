@@ -22,6 +22,9 @@ export const Tasks: React.FC = () => {
 	});
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const [editingTask, setEditingTask] = useState<Task | undefined>();
+    const [currentPage, setCurrentPage] = useState(1);
+	const tasksPerPage = 5;
+
 
 	useEffect(() => {
 		loadTasks();
@@ -35,9 +38,7 @@ export const Tasks: React.FC = () => {
 				setCurrentPage(1);
 			}, [filters, sort]);
 
-    const [currentPage, setCurrentPage] = useState(1);
-	const tasksPerPage = 5;
-
+    
 	const loadTasks = async () => {
 		try {
 			setLoading(true);
