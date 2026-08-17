@@ -7,6 +7,7 @@ import { TaskSearch } from "../components/tasks/TaskSearch";
 import { TaskSort as SortComponent } from "../components/tasks/TaskSort";
 import { AddTaskButton } from "../components/tasks/AddTaskButton";
 import { TaskFormDialog } from "../components/forms/TaskFormDialog";
+
 import "./Tasks.css";
 import { Pagination } from "../components/tasks/Pagination";
 
