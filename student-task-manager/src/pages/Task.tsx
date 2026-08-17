@@ -8,6 +8,7 @@ import { TaskSort as SortComponent } from "../components/tasks/TaskSort";
 import { AddTaskButton } from "../components/tasks/AddTaskButton";
 import { TaskFormDialog } from "../components/forms/TaskFormDialog";
 import "./Tasks.css";
+import { Pagination } from "../components/tasks/Pagination";
 
 export const Tasks: React.FC = () => {
 	const [tasks, setTasks] = useState<Task[]>([]);
@@ -30,6 +31,13 @@ export const Tasks: React.FC = () => {
 		applyFiltersAndSort();
 	}, [tasks, filters, sort]);
 
+     useEffect(() => {
+				setCurrentPage(1);
+			}, [filters, sort]);
+
+    const [currentPage, setCurrentPage] = useState(1);
+	const tasksPerPage = 5;
+
 	const loadTasks = async () => {
 		try {
 			setLoading(true);
@@ -42,7 +50,10 @@ export const Tasks: React.FC = () => {
 			setLoading(false);
 		}
 	};
-
+const paginatedTasks = filteredTasks.slice(
+	(currentPage - 1) * tasksPerPage,
+	currentPage * tasksPerPage,
+);
 	const applyFiltersAndSort = () => {
 		let result = taskService.filter(tasks, filters);
 		result = taskService.sort(result, sort);
@@ -79,6 +90,8 @@ export const Tasks: React.FC = () => {
 		await loadTasks();
 	};
 
+   
+
 	return (
 		<div className="tasks-page">
 			<div className="tasks-header">
@@ -105,7 +118,7 @@ export const Tasks: React.FC = () => {
 				<div className="tasks-error">{error}</div>
 			) : (
 				<TaskList
-					tasks={filteredTasks}
+					tasks={paginatedTasks}
 					onEdit={handleEditTask}
 					onDelete={handleDeleteTask}
 					onStatusChange={handleStatusChange}
@@ -120,6 +133,11 @@ export const Tasks: React.FC = () => {
 				}}
 				onSubmit={editingTask ? handleUpdateTask : handleCreateTask}
 				initialData={editingTask}
+			/>
+			<Pagination
+				currentPage={currentPage}
+				totalPages={Math.ceil(filteredTasks.length / tasksPerPage)}
+				onPageChange={setCurrentPage}
 			/>
 		</div>
 	);
