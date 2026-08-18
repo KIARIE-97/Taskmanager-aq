@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Task } from '../../types/task'
 import { format } from 'date-fns'
-import './TaskItem.css'
+// import './TaskItem.css'
 
 interface TaskItemProps {
   task: Task

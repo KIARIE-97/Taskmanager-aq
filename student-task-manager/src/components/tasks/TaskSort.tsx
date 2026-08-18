@@ -1,6 +1,6 @@
 import React from "react";
 import type { TaskSort as TaskSortState} from "../../types/task";
-import "./TaskSort.css";
+// import "./TaskSort.css";
 
 interface TaskSortProps {
 	sort: TaskSortState;
