@@ -7,7 +7,7 @@ interface TaskItemProps {
   task: Task
   onEdit: (task: Task) => void
   onDelete: (id: string) => void
-  onStatusChange: (id: string, Task['status']) => void
+  onStatusChange: (id: string, status: Task['status']) => void
 }
 
 export const TaskItem: React.FC<TaskItemProps> = ({
