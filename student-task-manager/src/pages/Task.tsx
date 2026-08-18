@@ -5,7 +5,7 @@ import { TaskList } from "../components/tasks/TaskList";
 import { TaskFilters as FilterComponent } from "../components/tasks/TaskFilters";
 import { TaskSearch } from "../components/tasks/TaskSearch";
 import { TaskSort as SortComponent } from "../components/tasks/TaskSort";
-import { AddTaskButton } from "../components/tasks/AddTaskButton";
+// import { AddTaskButton } from "../components/tasks/AddTaskButton";
 import { TaskFormDialog } from "../components/forms/TaskFormDialog";
 
 import "./Tasks.css";
@@ -103,7 +103,7 @@ const paginatedTasks = filteredTasks.slice(
 						Manage your academic and personal tasks
 					</p>
 				</div>
-				<AddTaskButton onClick={() => setIsFormOpen(true)} />
+				{/* <AddTaskButton onClick={() => setIsFormOpen(true)} /> */}
 			</div>
 
 			<div className="tasks-controls">

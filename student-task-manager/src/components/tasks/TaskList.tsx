@@ -40,6 +40,7 @@ export const TaskList: React.FC<TaskListProps> = ({
 				<TaskItem
 					key={task.id}
 					task={task}
+					// void={undefined}
 					onEdit={onEdit}
 					onDelete={onDelete}
 					onStatusChange={onStatusChange}

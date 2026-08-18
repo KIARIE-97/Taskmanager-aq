@@ -1,6 +1,6 @@
 import React from "react";
 import type {
-	TaskFilters,
+	TaskFilters as TaskFiltersState,
 	TaskCategory,
 	TaskPriority,
 	TaskStatus,
@@ -8,8 +8,8 @@ import type {
 import "./TaskFilters.css";
 
 interface TaskFiltersProps {
-	filters: TaskFilters;
-	onFilterChange: (filters: TaskFilters) => void;
+	filters: TaskFiltersState;
+	onFilterChange: (filters: TaskFiltersState) => void;
 }
 
 export const TaskFilters: React.FC<TaskFiltersProps> = ({
@@ -26,7 +26,7 @@ export const TaskFilters: React.FC<TaskFiltersProps> = ({
 	const priorities: TaskPriority[] = ["Low", "Medium", "High"];
 	const statuses: TaskStatus[] = ["Todo", "In Progress", "Completed"];
 
-	const handleFilterChange = (key: keyof TaskFilters, value: string) => {
+	const handleFilterChange = (key: keyof TaskFiltersState, value: string) => {
 		const newFilters = { ...filters };
 		if (value === "all") {
 			delete newFilters[key];
