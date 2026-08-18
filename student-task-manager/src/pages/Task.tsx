@@ -133,7 +133,15 @@ const paginatedTasks = filteredTasks.slice(
 					setIsFormOpen(false);
 					setEditingTask(undefined);
 				}}
-				onSubmit={editingTask ? handleUpdateTask : handleCreateTask}
+				onSubmit={(data: Partial<Task>) => {
+					if (editingTask) {
+						void handleUpdateTask(data);
+					} else {
+						void handleCreateTask(
+							data as Omit<Task, "id" | "createdAt">,
+						);
+					}
+				}}
 				initialData={editingTask}
 			/>
 			<Pagination
