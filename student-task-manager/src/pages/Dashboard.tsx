@@ -1,4 +1,3 @@
-// src/pages/Dashboard.tsx
 import React, { useState, useEffect } from "react";
 import { taskService } from "../services/taskService";
 import type { Task } from "../types/task";
