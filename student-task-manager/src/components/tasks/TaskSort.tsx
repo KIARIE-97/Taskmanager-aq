@@ -1,16 +1,16 @@
 import React from "react";
-import type { TaskSort } from "../../types/task";
+import type { TaskSort as TaskSortState} from "../../types/task";
 import "./TaskSort.css";
 
 interface TaskSortProps {
-	sort: TaskSort;
-	onSortChange: (sort: TaskSort) => void;
+	sort: TaskSortState;
+	onSortChange: (sort: TaskSortState) => void;
 }
 
 export const TaskSort: React.FC<TaskSortProps> = ({ sort, onSortChange }) => {
 	const handleFieldChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		onSortChange({
-			field: e.target.value as TaskSort["field"],
+			field: e.target.value as TaskSortState["field"],
 			direction: sort.direction,
 		});
 	};
